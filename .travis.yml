@@ -1,0 +1,23 @@
+# steps:
+# 1. Tell Travis we need a copy of docker running
+# 2. Build our image using Dockerfile.dev
+# 3. Tell Travis how to run our test suite
+# 4. Tell Travis how to deploy our code to AWS
+
+sudo: required
+services:
+  - docker
+
+# -t add a tag or a label on the image 
+# that is generated so we can referee to it
+# the tag name can be any thing (like "MY_IMAGE"), because the tag will be only going 
+# to be used inside this travis process
+# good convention is to use the <github user name>/<repository name>
+before_install:
+  - docker build -t trhv/first-docker-react -f Dockerfile.dev .
+
+# The script section is suppose to contain all the different commands need to be executed to actually run our suite.
+# Travis CI will be watching the output of each of this commands, 
+# and for each command if it ever gets return status other then zero travis is going to assume that our build failed
+script:
+  - docker run trhv/first-docker-react npm run test -- --coverage
