@@ -19,6 +19,6 @@ before_install:
 # The script section is suppose to contain all the different commands need to be executed to actually run our suite.
 # Travis CI will be watching the output of each of this commands, 
 # and for each command if it ever gets return status other then zero travis is going to assume that our build failed
-# TODO - need to fix script that runs test
-# script:
-#   - docker run trhv/first-docker-react npm test -- --coverage
+# TODO - need to fix script that runs
+script:
+  - docker run trhv/first-docker-react npm run test
