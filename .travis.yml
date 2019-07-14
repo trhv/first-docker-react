@@ -20,4 +20,4 @@ before_install:
 # Travis CI will be watching the output of each of this commands, 
 # and for each command if it ever gets return status other then zero travis is going to assume that our build failed
 script:
-  - docker run trhv/first-docker-react npm run test -- --coverage
+  - docker run trhv/first-docker-react npm test -- --coverage
